@@ -157,7 +157,7 @@ public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecycler
 
         } catch (Exception e) {
 
-            Log.d(LOG_TAG,""+e);
+            Log.d(LOG_TAG, "" + e);
 
         }
 
@@ -219,7 +219,12 @@ public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecycler
                     if (fragment == null) {
                         context.startActivity(intent);
                     } else {
+
                         fragment.startActivityForResult(intent, getAdapterPosition());
+
+                        if (listener != null) {
+                            listener.onStartFullItemInfo(true);
+                        }
                     }
 
                 }

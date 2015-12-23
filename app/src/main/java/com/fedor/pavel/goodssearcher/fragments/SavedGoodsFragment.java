@@ -98,7 +98,6 @@ public class SavedGoodsFragment extends Fragment implements GoodsLoadListener, I
         }
     }
 
-
     private boolean isHaveGoods(int count) {
 
         if (count == 0) {
@@ -145,6 +144,13 @@ public class SavedGoodsFragment extends Fragment implements GoodsLoadListener, I
     public void onRemove(int itemsCount) {
 
         isHaveGoods(itemsCount);
+
+    }
+
+    @Override
+    public void onStartFullItemInfo(boolean start) {
+
+        isStateChanged = start;
 
     }
 

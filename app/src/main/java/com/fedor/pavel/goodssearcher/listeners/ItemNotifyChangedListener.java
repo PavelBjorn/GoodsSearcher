@@ -5,4 +5,6 @@ public interface ItemNotifyChangedListener {
 
     void onRemove(int itemsCount);
 
+    void onStartFullItemInfo(boolean start);
+
 }
