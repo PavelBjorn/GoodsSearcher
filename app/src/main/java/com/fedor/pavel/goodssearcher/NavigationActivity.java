@@ -72,30 +72,8 @@ public class NavigationActivity extends AppCompatActivity {
 
         tblNavigation = (TabLayout) findViewById(R.id.navigation_activity_tbl);
 
-        /*tblNavigation.addTab(tblNavigation.newTab().setText(getResources().getText(R.string.tab_searchGoods_title).toString()), true);
-
-        tblNavigation.addTab(tblNavigation.newTab().setText(getResources().getText(R.string.tab_savedGoods_title).toString()));*/
-
         tblNavigation.setupWithViewPager(vpNavigation);
 
-       /* tblNavigation.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-
-                vpNavigation.setCurrentItem(tab.getPosition(),false);
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });*/
 
     }
 
