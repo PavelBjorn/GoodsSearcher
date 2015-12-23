@@ -73,8 +73,6 @@ public class SavedGoodsFragment extends Fragment implements GoodsLoadListener, I
         Log.d(LOG_TAG, "onResume");
     }
 
-
-
     private void prepareViews(View view) {
 
         rvSavedGoods = (RecyclerView) view.findViewById(R.id.saved_goods_activity_rv_goodsList);
