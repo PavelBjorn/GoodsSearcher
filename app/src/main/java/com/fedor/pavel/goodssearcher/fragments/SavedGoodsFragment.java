@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,15 +31,13 @@ public class SavedGoodsFragment extends Fragment implements GoodsLoadListener, I
     private RecyclerView rvSavedGoods;
     private TextView tvMessage;
     private GoodsRecyclerViewAdapter goodsAdapter;
-    private ProgressDialog progressDialog;
-    private boolean isStateGange = false;
-
+    private boolean isStateChanged = false;
+    private static final String LOG_TAG = "SavedGoodsFragment";
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        createProgressDialog();
 
         View view = inflater.inflate(R.layout.fragment_saved_goods, container, false);
 
@@ -48,7 +47,7 @@ public class SavedGoodsFragment extends Fragment implements GoodsLoadListener, I
 
         prepareViews(view);
 
-        if (!isStateGange) {
+        if (!isStateChanged) {
 
             searchInBd();
 
@@ -61,16 +60,17 @@ public class SavedGoodsFragment extends Fragment implements GoodsLoadListener, I
         return view;
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
 
-        if (isStateGange) {
-            isStateGange = false;
+        if (isStateChanged) {
+            isStateChanged = false;
         } else {
             searchInBd();
         }
+
+        Log.d(LOG_TAG, "onResume");
     }
 
     private void prepareViews(View view) {
@@ -88,7 +88,6 @@ public class SavedGoodsFragment extends Fragment implements GoodsLoadListener, I
     @Override
     public void onGoodsLoadFinish(ArrayList<GoodsModel> goodsModels) {
 
-        progressDialog.dismiss();
 
         goodsAdapter.clear();
 
@@ -99,15 +98,6 @@ public class SavedGoodsFragment extends Fragment implements GoodsLoadListener, I
         }
     }
 
-    public void createProgressDialog() {
-
-        progressDialog = new ProgressDialog(getActivity());
-
-        progressDialog.setMessage(getActivity().getResources().getText(R.string.load_dialog_message));
-
-        progressDialog.setCancelable(false);
-
-    }
 
     private boolean isHaveGoods(int count) {
 
@@ -166,8 +156,6 @@ public class SavedGoodsFragment extends Fragment implements GoodsLoadListener, I
 
             GoodsLoadTask loadTask = new GoodsLoadTask(this);
 
-            progressDialog.show();
-
             loadTask.execute();
         }
     }
@@ -194,4 +182,6 @@ public class SavedGoodsFragment extends Fragment implements GoodsLoadListener, I
         goodsAdapter.addAllGoods(response.getGoods());
 
     }
+
+
 }

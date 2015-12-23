@@ -14,7 +14,6 @@ import retrofit.http.QueryMap;
 
 public interface API {
 
-
     @GET(APIQueryConstants.API_CATEGORIES)
     void getCategories(@Query(APIQueryConstants.API_APP_ID_KEY) String apiKey, Callback<CategoryResponse> models);
 
