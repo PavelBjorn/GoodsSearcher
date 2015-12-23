@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.fedor.pavel.goodssearcher.FoundGoodsActivity">
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/saved_goods_activity_rv_goodsList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <TextView
+        android:id="@+id/saved_goods_activity_tv_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/saved_goods_activity_tv_message"
+        android:textColor="@color/colorAccent"
+        android:textSize="36sp"
+        android:textStyle="italic"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/saved_goods_activity_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:indeterminateDrawable="@drawable/progress_bar"
+        android:indeterminateOnly="true"
+        android:visibility="invisible" />
+
+</android.support.design.widget.CoordinatorLayout>
